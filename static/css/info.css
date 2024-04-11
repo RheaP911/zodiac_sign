@@ -1,0 +1,113 @@
+/* ---- Poppins ----- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    height: 100vh;
+    background-color: #190C26;
+    overflow: hidden;
+}
+
+.container .card:hover {
+    transform: scale(1.1, 1.1);
+    transition: all 0.7s ease;
+
+}
+
+.container:hover > .card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+    transition: all 0.7s ease;
+}
+
+.user-name-card,
+.user-bday-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    height: 80%;
+    background-color: #150B26;
+    border-radius: 45px;
+}
+
+.ask-user {
+    font-size: 20px;
+    color: #E6D3FB;
+}
+
+.input-icon {
+    width: 250px;
+    animation: float 2s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(5%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+input{
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+    color: #E6D3FB;
+    font-weight: 600;
+    padding: 10px;
+    border-bottom: 2px solid #CCB3E0;
+    margin-bottom: 4em;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+
+.user-name-card input::placeholder {
+    color: #CCB3E0;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-btn {
+    padding: 10px 0;
+    width: 200px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(to bottom right, #E146F9, #5E17EB);
+    cursor: pointer;
+}
+
+.user-btn:active {
+    transform: translateY(2px);
+}
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/info.css">
+    <title>User Info</title>
+</head>
+<body>
+    <div class="container">
+        <div class="user-name-card card">
+            <span class="ask-user">How should I call you?</span>
+            <img src="/static/resources/user_name.png" alt="" class="input-icon">
+            <form method="POST">
+                <input type="text" name="nickname" id="nickname" placeholder="Nickname" required>
+                <button class="user-btn" id="save-name">Continue</button>
+            </form>
+        </div>
+        <div class="user-bday-card card">
+            <span class="ask-user">When is your birthday?</span>
+            <img src="/static/resources/user_bday.png" alt="" class="input-icon" required>
+            <form method="POST">
+                <input type="date" name="birthdate">
+                <button class="user-btn" id="save-bday">Save</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

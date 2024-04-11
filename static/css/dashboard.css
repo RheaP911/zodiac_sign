@@ -1,0 +1,708 @@
+/* ---- Poppins ----- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* ---- Syne ----- */
+@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Kings&family=Montagu+Slab:opsz,wght@16..144,100..700&family=Syne+Tactile&family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Syne', system-ui;
+    
+}
+
+body {
+    background: url(/static/resources/horo_bg.png);
+}
+
+.star {
+    position: fixed;
+    pointer-events: none;
+}
+
+.star:before, .star:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '\2726';
+    font-size: 9px;
+}
+
+.star:before {
+    color: transparent;
+    text-shadow: 0 0 3px #F5E8D5;
+}
+
+.star:after {
+    background: #E6D3FB;
+    /* background: linear-gradient(to bottom right, #fff, #5E17EB); */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* ----------- SIDEBAR ----------- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 88px;
+    padding: 10px 14px;
+    background: #17072B;
+    transition: all 0.5s ease;
+    z-index: 100;
+}
+
+.sidebar:hover {
+    width: 250px;
+
+}
+
+/* ----------MENU CATEGORY -------------- */
+
+.sidebar li {
+    height: 50px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon{
+    min-width: 60px;
+    border-radius: 6px;
+}
+
+.sidebar .icon {
+    min-width: 60px;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.sidebar-icon {
+    width: 20px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.sidebar .text,
+.sidebar .icon {
+    color: #fff;
+    transition: all 0.5s ease;
+}
+
+.sidebar .text {
+    font-size: 17px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar header {
+    position: relative;
+}
+
+.sidebar header .image-text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sidebar header .image-text {
+    margin-top: 1em;
+}
+
+.sidebar header .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1em;
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0;
+    background: linear-gradient(to bottom right, #E146F9, #5E17EB);
+}
+
+.sidebar:hover header .image {
+    background: transparent;
+    margin-bottom: -1.2rem;
+}
+
+.sidebar:hover header .image img {
+    width: 220px;
+    border-radius: 6px;
+    animation: notrotate 2s infinite
+}
+
+@keyframes notrotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.sidebar:hover .logo-text .tagline {
+    margin-top: -10rem;
+    color: #E6D3FB;
+    opacity: 1;
+}
+
+.sidebar .text .tagline {
+    opacity: 0;
+}
+
+.sidebar header .image img {
+    width: 60px;
+    animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+
+.sidebar:hover .menu-bar {
+    margin-top: 1.2em;
+}
+
+.sidebar .menu {
+    margin-top: 40px;
+}
+
+.sidebar li.search-box {
+    border-radius: 6px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.search-box i::before {
+    color: #17072B;
+}
+
+.sidebar li.search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: #f0f0f0;
+    color: #17072B;
+    border-radius: 6px;
+    font-size: 17px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+}
+
+.sidebar li a {
+    list-style: none;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.5s ease;
+}
+
+.sidebar li a:hover , 
+.sidebar li a.active {
+    background: linear-gradient(to bottom right, #E146F9, #5E17EB);
+}
+
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+    color: #fff;
+}
+
+.sidebar .menu-bar {
+    height: calc(100% - 55px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
+.menu-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.menu-bar .bottom-content {
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.logout-btn {
+    margin-bottom: 1rem;
+}
+
+
+/* -------------- DASHBOARD ----------- */
+
+.dashboard {
+    position: absolute;
+    top: 0;
+    left: 88px;
+    height: 100vh;
+    width: calc(100% - 88px);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 40px;
+    gap: 1rem;
+    /* background-color: #190C26; */
+    transition: all 0.5s ease;
+}
+
+.dashboard .dashboard-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #f0f0f0;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.dashboard {
+    gap: 45px;
+}
+
+.dashboard .dash1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    /* border: 1px solid #f0f0f0; */
+}
+
+.dashboard .dash1 .personality-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 30vh;
+    /* border: 1px solid #f0f0f0; */
+}
+
+.personality-wrapper .personality-card {
+    /* border: 1px solid #f0f0f0; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    background: #17072B;
+    border-radius: 25px;
+    width: 30%;
+    height: 85%;
+    padding: 40px;
+}
+
+.personality-icon {
+    height: 50%;
+}
+
+.card-text {
+    color: #f0f0f0;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.card-percent {
+    color: #E6D3FB;
+    font-size: 12px;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.bar {
+    font-size: 23px;
+    margin-top: 40px 0;
+    margin-bottom: 5px;
+}
+
+.bar .progress-line {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 5px;
+    background-color: #190C26;
+    animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+@keyframes animate {
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+.bar .progress-line span {
+    height: 100%;
+    /* background-color: #ff3e7e; */
+    background: linear-gradient(to bottom right, #E146F9, #5E17EB);
+    /* box-shadow: 0 0 5px #E146F9, 0 0 10px #E146F9; */
+    position: absolute;
+    border-radius: 10px;
+    animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.progress-line.looks span {
+    width: 35%;   
+}
+
+.progress-line.personality span {
+    width: 85%;   
+}
+
+.progress-line.intelligence span {
+    width: 70%;   
+}
+
+/* .progress-line.html span {
+    width: 50%;   
+} */
+
+.progress-line span::after {
+    position: absolute;
+    padding: 1px 8px;
+    background-color: #000;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 3px;
+    top: -28px;
+    right: -20px;
+    opacity: 0;
+}
+
+.progress-line span::after {
+    content: "50%";
+}
+
+/* ---------------- DAILY HOROSCOPE ----------------- */
+
+.dashboard .dash1 .daily-horoscope-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    /* border: 1px solid #f0f0f0; */
+    background: #17072B;
+    padding: 40px;
+    border-radius: 25px;
+}
+
+.daily-horoscope-card .star-sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 80%;
+}
+
+.daily-horoscope-card .star-sign img {
+    width: 300px;
+    /* animation: 5s floatSide linear infinite; */
+}
+
+@keyframes floatSide {
+    0% {
+        transform: translateX(0);
+    }
+    30% {
+        transform: translateX(5%);
+    }
+    70% {
+        transform: translateX(-5%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.horoscope {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+}
+
+.horoscope-text {
+    font-size: 28px;
+    color: #E6D3FB;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-family: "Syne Tactile", system-ui;
+    
+}
+
+.horoscope-date {
+    font-size: 20px;
+    color: #E6D3FB;
+    line-height: 2em;
+    font-weight: 500;
+}
+
+.horoscope-desc {
+    font-size: 16px;
+    color: #f0f0f0;
+    text-align: justify;
+    line-height: 1.5em;
+}
+
+/* ----------------- COMPATIBILITY OTHER ------------ */
+
+.dashboard .dash1 .compatibility-other-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+    /* border: 1px solid #f0f0f0; */
+
+}
+
+.compatibility-other-card .compatibility{
+    position: relative;
+    width: 53%;
+    height: 100%;
+    /* border: 1px solid #f0f0f0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.compatibility .compatibility-card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.compatibility-card .compatibility1 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.compatibility-card .compatibility1 .card-text {
+    line-height: 1.5em;
+}
+
+.compatibility1 .card-text {
+    font-size: 16px;
+}
+
+.compatibility1 .card-subtext {
+    font-size: 12px;
+    color: #E6D3FB;
+}
+
+.compatibility-card .compatibility2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+.compatibility2 .match-sign {
+    width: 60px;
+}
+
+/* ------------ OTHER --------------- */
+
+.other-zodiac {
+    width: 48%;
+    height: 100%;
+    /* border: 1px solid #f0f0f0; */
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+
+.compatibility .compatibility-card {
+    width: 90.515%;
+    height: 65%;
+    background: #17072B;
+    border-radius: 25px;
+    /* border: 1px solid #f0f0f0; */
+}
+
+.other-zodiac .other-zodiac-card {
+    width: 100%;
+    height: 65%;
+    /* border: 1px solid #f0f0f0; */
+    background: #17072B;
+    border-radius: 25px;
+}
+
+/* -------------DASHBOARD 2------------ */
+
+.dashboard .dash2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    /* border: 1px solid #f0f0f0; */
+}
+
+.dash2 .user-zodiac {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    background: #17072B;
+    
+    border-radius: 25px;
+    /* border: 1px solid #f0f0f0; */
+}
+
+.user-zodiac img {
+    width: 55%;
+    animation: float 2s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(2%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.user-zodiac .horoscope-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -2em;
+}
+
+
+
+.horoscope-info .zodiac-name {
+    color: #f0f0f0;
+    font-size: 36px;
+    font-weight: 600;
+    font-family: "Syne Tactile", system-ui;
+
+}
+
+.horoscope-info .zodiac-date {
+    color: #E6D3FB;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+
+/* ------------- LUCKY PICKS --------------- */
+
+.dash2 .lucky-picks {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 40vh;
+    /* border: 1px solid #f0f0f0; */
+}
+
+.lucky-picks .lucky-num,
+.lucky-picks .lucky-color {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* margin-top: 45px; */
+    /* border: 1px solid #f0f0f0; */
+    
+}
+
+.lucky-picks .lucky-num {
+    margin-top: 33px;
+}
+
+
+.lucky-picks .lucky-num .lucky-num-card,
+.lucky-picks .lucky-color .lucky-color-card {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    height: 13vh;
+    /* border: 1px solid #f0f0f0; */
+    background: #17072B;
+    border-radius: 25px;
+    padding: 40px;
+}
+
+.lucky-color-card .color-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 20%;
+}
+
+.color-box .lucky-color-box {
+    width: 75px;
+    height: 75px;
+    background-color: blueviolet;
+    border-radius: 25px;
+}
+
+.lucky-color-card .color-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+    font-size: 12px;
+    width: 80%;
+}
+
+.color-info .color-name {
+    color: #f0f0f0;
+    font-weight: 600;
+    line-height: 2em;
+    font-size: 16px;
+}
+
+.color-info .color-desc {
+    color: #E6D3FB;
+    line-height: 1.5em;
+
+}

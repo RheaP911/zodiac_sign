@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/css/dashboard.css">
+
+    <title>Horoscope</title>
+</head>
+<body>
+    <nav class="sidebar">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="/static/resources/logo-gwhite.png" alt="">
+                </span>
+                <div class="text logo-text">
+                    <span class="tagline">Your Astro Reader</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links" id="zodiac-buttons">
+                    <li class="nav-link">
+                        <a href="#" onclick="showAries();" class="zodiac-btn active">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/aries.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bx-home-alt icon'></i> -->
+                            <span class="text nav-text">Aries</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#" onclick="showTaurus();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/taurus.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bx-shape-circle icon'></i> -->
+                            <span class="text nav-text">Taurus</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link" class="zodiac-btn">
+                        <a href="#" onclick="showGemini();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/gemini.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bx-user-circle icon'></i> -->
+                            <span class="text nav-text">Gemini</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" onclick="showCancer();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/cancer.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bx-heart icon'></i> -->
+                            <span class="text nav-text">Cancer</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" onclick="showLeo();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/leo.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bx-star icon'></i> -->
+                            <span class="text nav-text">Leo</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" onclick="showVirgo();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/virgo.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bxs-analyse icon'></i> -->
+                            <span class="text nav-text">Virgo</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" onclick="showLibra();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/libra.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bxs-analyse icon'></i> -->
+                            <span class="text nav-text">Libra</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" onclick="showScorpio();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/scorpio.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bxs-analyse icon'></i> -->
+                            <span class="text nav-text">Scorpio</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" onclick="showSagittarius();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/sagittarius.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bxs-analyse icon'></i> -->
+                            <span class="text nav-text">Sagittarius</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" onclick="showCapcricorn();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/capricorn.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bxs-analyse icon'></i> -->
+                            <span class="text nav-text">Capricorn</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" onclick="showAquarius();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/aquarius.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bxs-analyse icon'></i> -->
+                            <span class="text nav-text">Aquarius</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#" onclick="showPisces();" class="zodiac-btn">
+                            <div class="icon">
+                                <img src="/static/resources/sidebar-icon/pisces.png" alt="" class="sidebar-icon">
+                            </div>
+                            <!-- <i class='bx bxs-analyse icon'></i> -->
+                            <span class="text nav-text">Pisces</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+                <li class="logout-btn">
+                    <a href="/logout/">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="dashboard">
+        <div class="dash1">
+            <div class="personality-wrapper">
+                <div class="personality-card">
+                    <div class="personality-icon"></div>
+                    <span class="card-text">Looks</span>
+                    <span class="card-percent looks">{{ .Aries.LooksRate }}</span>
+                    <div class="bar">
+                        <div class="progress-line looks">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-icon"></div>
+                    <span class="card-text">Personality</span>
+                    <span class="card-percent personality">{{ .Aries.PersonalityRate }}</span>
+                    <div class="bar">
+                        <div class="progress-line personality">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="personality-card">
+                    <div class="personality-icon"></div>
+                    <span class="card-text">Intelligence</span>
+                    <span class="card-percent intelligence">{{ .Aries.IntelligenceRate }}</span>
+                    <div class="bar">
+                        <div class="progress-line intelligence">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="daily-horoscope-card">
+                <div class="star-sign">
+                    <img src="{{ .Aries.Symbol }}" alt="" class="star-sign-img">
+                </div>
+                <div class="horoscope">
+                    <span class="horoscope-text">DAILY HOROSCOPE</span>
+                    <span class="horoscope-date">{{ .Date }}</span>
+                    <span class="horoscope-desc">{{ .Horoscope.Horoscope }}</span>
+                </div>
+            </div>
+            <div class="compatibility-other-card">
+                <div class="compatibility">
+                    <span class="dashboard-text">Compatibility</span>
+                    <div class="compatibility-card">
+                        <div class="compatibility1">
+                            <span class="card-text">Compatible with...</span>
+                            <span class="card-subtext">{{ .Aries.Compatible }}</span>
+                        </div>
+                        <div class="compatibility2">
+                            <img src="{{ .Aries.Compatible1 }}" alt="" class="match-sign first">
+                            <img src="{{ .Aries.Compatible1 }}" alt="" class="match-sign second">
+                            <img src="{{ .Aries.Compatible1 }}" alt="" class="match-sign third">
+                        </div>
+                    </div>
+                </div>
+                <div class="other-zodiac">
+                    <span class="dashboard-text">View Other Zodiac Signs</span>
+                    <div class="other-zodiac-card"></div>
+                </div>
+            </div>
+        </div>
+        <div class="dash2">
+            <div class="user-zodiac">
+                <img src="{{ .Aries.Symbol }}" alt="" class="zodiac-img">
+                <div class="horoscope-info">
+                    <span class="zodiac-name">{{ .Aries.Name }}</span>
+                    <span class="zodiac-date">{{ .Aries.Date }}</span>
+                </div>
+            </div>
+            <div class="lucky-picks">
+                <div class="lucky-num">
+                    <span class="dashboard-text">Today's Lucky Number</span>
+                    <div class="lucky-num-card"></div>
+                </div>
+                <div class="lucky-color">
+                    <span class="dashboard-text">Today's Lucky Color</span>
+                    <div class="lucky-color-card">
+                        <div class="color-box">
+                            <div class="lucky-color-box"></div>
+                        </div>
+                        <div class="color-info">
+                            <div class="color-name">Violet</div>
+                            <div class="color-desc"> This vibrant color is believed to uplift spirits, 
+                                promote clarity of thought, and encourage creativity. </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="/static/js/script.js"></script>
+    <script>
+        function showAries() {
+            document.querySelector(".zodiac-name").textContent = "{{ .Aries.Name }}";
+            document.querySelector(".zodiac-date").textContent = "{{ .Aries.Date }}";
+            document.querySelector(".card-percent.looks").textContent = "{{ .Aries.LooksRate }}";
+            document.querySelector(".card-percent.personality").textContent = "{{ .Aries.PersonalityRate }}";
+            document.querySelector(".card-percent.intelligence").textContent = "{{ .Aries.IntelligenceRate }}";
+        }
+        function showGemini() {
+            document.querySelector(".zodiac-name").textContent = "{{ .Gemini.Name }}";
+            document.querySelector(".zodiac-date").textContent = "{{ .Gemini.Date }}";
+
+            document.querySelector(".card-percent.looks").textContent = "{{ .Gemini.LooksRate }}";
+            document.querySelector(".card-percent.personality").textContent = "{{ .Gemini.PersonalityRate }}";
+            document.querySelector(".card-percent.intelligence").textContent = "{{ .Gemini.IntelligenceRate }}";
+
+            // Assuming .card-percent.looks is a container for the Gemini.LooksRate value
+            var looksRate = "{{ .Gemini.LooksRate }}";
+            var personalityRate = "{{ .Gemini.PersonalityRate }}"; 
+            var intelligenceRate = "{{ .Gemini.IntelligenceRate }}"; 
+
+            // Set the text content of the .card-percent.looks element to Gemini.LooksRate
+            document.querySelector(".card-percent.looks").textContent = looksRate;
+            document.querySelector(".card-percent.personality").textContent = personalityRate;
+            document.querySelector(".card-percent.intelligence").textContent = intelligenceRate;
+
+            // Convert the Gemini.LooksRate value to a percentage and set it as the width of the progress line
+            var progressLine = document.querySelector(".progress-line.looks span");
+            progressLine.style.width = looksRate;
+            var progressLine = document.querySelector(".progress-line.personality span");
+            progressLine.style.width = personalityRate;
+            var progressLine = document.querySelector(".progress-line.intelligence span");
+            progressLine.style.width = intelligenceRate;
+
+            document.querySelector(".card-subtext").textContent = "{{ .Gemini.Compatible }}";
+            document.querySelector(".zodiac-img").setAttribute('src','{{ .Gemini.Symbol }}');
+            document.querySelector(".star-sign-img").setAttribute('src','{{ .Gemini.StarSign }}');
+            document.querySelector(".match-sign.first").setAttribute('src','{{ .Gemini.Compatible1 }}');
+            document.querySelector(".match-sign.second").setAttribute('src','{{ .Gemini.Compatible2 }}');
+            document.querySelector(".match-sign.third").setAttribute('src','{{ .Gemini.Compatible3 }}');
+
+        }
+        function showTaurus() {
+            document.querySelector(".zodiac-name").textContent = "{{ .Taurus.Name }}";
+            document.querySelector(".zodiac-date").textContent = "{{ .Taurus.Date }}";
+            document.querySelector(".card-percent.looks").textContent = "{{ .Taurus.LooksRate }}";
+            document.querySelector(".card-percent.personality").textContent = "{{ .Taurus.PersonalityRate }}";
+            document.querySelector(".card-percent.intelligence").textContent = "{{ .Taurus.IntelligenceRate }}";
+        }
+        
+    </script>
+</body>
+
+</html>
