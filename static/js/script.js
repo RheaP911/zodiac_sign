@@ -46,19 +46,46 @@ sidebar.addEventListener("mouseleave", () => {
     });
 });
 
+// Search
+
+// Get the input element
+var input = document.getElementById("searchInput");
+// Get the menu links container
+var menuLinks = document.getElementById("zodiac-buttons");
+// Get all the menu links
+var links = menuLinks.getElementsByTagName("li");
+
+// Add event listener for input event
+input.addEventListener("input", function() {
+    // Get the search query
+    var searchQuery = input.value.toLowerCase();
+    // Loop through all menu links
+    for (var i = 0; i < links.length; i++) {
+        var linkText = links[i].textContent.toLowerCase();
+        // Check if the link text contains the search query
+        if (linkText.includes(searchQuery)) {
+            // Show the menu link
+            links[i].style.display = "block";
+        } else {
+            // Hide the menu link
+            links[i].style.display = "none";
+        }
+    }
+});
+
 
 //Active sidebar buttons
-var btnContainer = document.getElementById("zodiac-buttons");
+// var btnContainer = document.getElementById("zodiac-buttons");
 
-var btns = btnContainer.getElementsByClassName("zodiac-btn");
+// var btns = btnContainer.getElementsByClassName("zodiac-btn");
 
-for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function() {
-        var current = document.getElementsByClassName("active");
-        current[0].className = current[0].className.replace(" active", "");
+// for (var i = 0; i < btns.length; i++) {
+//     btns[i].addEventListener("click", function() {
+//         var current = document.getElementsByClassName("active");
+//         current[0].className = current[0].className.replace(" active", "");
 
-        this.className += " active";
-    });
-}
+//         this.className += " active";
+//     });
+// }
 
 

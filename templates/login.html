@@ -4,19 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/static/css/login.css">
     <title>Login Form</title>
 </head>
 <body>
+    <div class="welcome-card">
+        <span class="welcome-text">Welcome to</span>
+        <img src="/static/resources/site-name.png" alt="" class="site-name">
+        <span class="subtitle">Your Astro Reader</span>
+        <img src="/static/resources/site-logo.png" alt="" class="site-logo">
+    </div>
     <div class="login-card">
         <form method="POST" action="/login/">
-            <input type="text" name="username" placeholder="Username" value="{{.Username}}" required><br>
-            <input type="password" name="password" placeholder="Password" value="{{.Password}}" required><br>
+            <input type="text" name="username" placeholder="Username" value="{{.Username}}" required>
+            <i class='bx bx-user'></i><br>
+            <input type="password" name="password" placeholder="Password" value="{{.Password}}" required>
+            <i class='bx bx-lock-alt' ></i><br>
     
             <br><button type="submit">Login</button><br>
             
         </form>
     </div>
+    
     
     {{if .ErrExists}}
     <p>

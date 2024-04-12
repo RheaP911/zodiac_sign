@@ -17,10 +17,8 @@ func main() {
 	uadmin.Register(
 		models.ZodiacSigns{},
 		models.Horoscope{},
-		models.Aries{},
-		models.Taurus{},
-		models.Gemini{},
-
+		models.Colors{},
+		models.Numbers{},
 	)
 
 	http.HandleFunc("/", uadmin.Handler(views.MainHandler))

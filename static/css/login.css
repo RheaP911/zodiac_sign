@@ -1,36 +1,113 @@
+/* ---- Poppins ----- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* ---- Syne ----- */
+@import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Kings&family=Montagu+Slab:opsz,wght@16..144,100..700&family=Syne+Tactile&family=Texturina:ital,opsz,wght@0,12..72,100..900;1,12..72,100..900&display=swap');
+
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* .video-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
-
-#video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.login-card {
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10; /* Ensure the content appears above the video */
-    /* background: rgba(255, 2555, 255, 0.2);
-    box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    padding: 20px;
-} */
+    width: 100%;
+    height: 100vh;
+    gap: 0;
+    background: #190C26;
+    /* background: url(/static/resources/horo_bg.png); */
+
+}
+
+.login-wrapper {
+    background: #190C26;
+}
+
+.welcome-card,
+.login-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 80%;
+}
+
+.welcome-card {
+    background: #150B26;
+    padding: 50px;
+    border-radius: 45px 0 0 45px;
+}
+
+.welcome-card .welcome-text {
+    color: #E6D3FB;
+    font-size: 16px;
+    margin-bottom: 5em;
+}
+
+.welcome-card .subtitle {
+    color: #f0f0f0;
+    font-size: 24px;
+    font-weight: 500;
+    font-family: 'Syne', system-ui;
+    margin-top: -0.5em;
+    margin-bottom: 2em;
+}
+
+.welcome-card .site-name {
+    width: 500px;
+}
+
+.welcome-card .site-logo {
+    width: 300px;
+    margin-bottom: 2em;
+    /* animation: rotate 50s linear infinite; */
+    animation: float 2s linear infinite;
+
+
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(2%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+.login-card {
+    background: #2A0741;
+    border-radius: 0 45px 45px 0;
+    /* background: url(/static/resources/horo_bg2.png); */
+}
+
+.login-card form {
+    text-align: center;
+}
+
+.input {
+    padding: 10px;
+    background-color: transparent;
+    border-radius: #E6D3FB;
+}
+

@@ -7,13 +7,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
     font-family: 'Syne', system-ui;
-    
 }
 
 body {
     background: url(/static/resources/horo_bg.png);
+    /* background: #190C26; */
+
 }
 
 .star {
@@ -318,7 +318,14 @@ body {
 }
 
 .personality-icon {
+    display: flex;
+    flex-direction: column-reverse;
     height: 50%;
+    padding-bottom: 10px;
+}
+
+.personality-icon img {
+    width: 60px;
 }
 
 .card-text {
@@ -486,7 +493,8 @@ body {
 
 }
 
-.compatibility-other-card .compatibility{
+.compatibility-other-card .compatibility,
+.compatibility-other-card .other-zodiac{
     position: relative;
     width: 53%;
     height: 100%;
@@ -496,6 +504,7 @@ body {
     justify-content: end;
 }
 
+.other-zodiac .other-zodiac-card,
 .compatibility .compatibility-card {
     position: relative;
     display: flex;
@@ -504,25 +513,30 @@ body {
     padding: 40px;
 }
 
+.other-zodiac-card .other-zodiac1,
 .compatibility-card .compatibility1 {
     display: flex;
     flex-direction: column;
     width: 50%;
 }
 
+.other-zodiac-card .other-zodiac1 .card-text,
 .compatibility-card .compatibility1 .card-text {
     line-height: 1.5em;
 }
 
+.other-zodiac1 .card-text,
 .compatibility1 .card-text {
     font-size: 16px;
 }
 
+.other-zodiac1 .card-subtext,
 .compatibility1 .card-subtext {
     font-size: 12px;
     color: #E6D3FB;
 }
 
+.other-zodiac-card .other-zodiac2,
 .compatibility-card .compatibility2 {
     display: flex;
     align-items: center;
@@ -530,22 +544,12 @@ body {
     width: 50%;
 }
 
+.other-zodiac2 img,
 .compatibility2 .match-sign {
     width: 60px;
 }
 
-/* ------------ OTHER --------------- */
-
-.other-zodiac {
-    width: 48%;
-    height: 100%;
-    /* border: 1px solid #f0f0f0; */
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-}
-
-
+.other-zodiac .other-zodiac-card,
 .compatibility .compatibility-card {
     width: 90.515%;
     height: 65%;
@@ -554,13 +558,38 @@ body {
     /* border: 1px solid #f0f0f0; */
 }
 
+/* ------------ OTHER --------------- */
+/* 
+.other-zodiac {
+    width: 48%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+
 .other-zodiac .other-zodiac-card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 65%;
-    /* border: 1px solid #f0f0f0; */
     background: #17072B;
     border-radius: 25px;
+    padding: 40px;
 }
+
+.other-zodiac1 .card-text {
+    font-size: 16px;
+}
+
+.other-zodiac1  .card-subtext {
+    font-size: 12px;
+    color: #E6D3FB;
+} */
+
 
 /* -------------DASHBOARD 2------------ */
 
@@ -653,8 +682,8 @@ body {
     
 }
 
-.lucky-picks .lucky-num {
-    margin-top: 33px;
+.lucky-picks .lucky-color {
+    margin-top: 40px;
 }
 
 
@@ -671,11 +700,51 @@ body {
     padding: 40px;
 }
 
+.lucky-num-card .num-wrapper {
+
+}
+
+.lucky-num-card .num-card {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 75px;
+    background: linear-gradient(to bottom right, #E146F9, #5E17EB);
+    border-radius: 25px;
+}
+
+
+.lucky-num-card .num-wrapper,
 .lucky-color-card .color-box {
     position: relative;
     display: flex;
     align-items: center;
     width: 20%;
+}
+
+.num-card .card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, #E146F9, #5E17EB);
+
+    /* background: #17072B; */
+    border-radius: 20px;
+    width: 90%;
+    height: 90%;
+    
+}
+
+.card-content .num-text {
+    position: relative;
+    /* color: #E146F9; */
+    color: #f0f0f0;
+    text-shadow: 2px 2px #E146F9;
+    font-size: 32px;
+    font-family: 'Syne', system-ui;
+
 }
 
 .color-box .lucky-color-box {
@@ -685,6 +754,7 @@ body {
     border-radius: 25px;
 }
 
+.lucky-num-card .num-info,
 .lucky-color-card .color-info {
     display: flex;
     flex-direction: column;
@@ -694,6 +764,7 @@ body {
     width: 80%;
 }
 
+.num-info .num-name ,
 .color-info .color-name {
     color: #f0f0f0;
     font-weight: 600;
@@ -701,6 +772,7 @@ body {
     font-size: 16px;
 }
 
+.num-info .num-desc,
 .color-info .color-desc {
     color: #E6D3FB;
     line-height: 1.5em;

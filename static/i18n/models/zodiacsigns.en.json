@@ -1,6 +1,34 @@
 {
   "display_name": "Zodiac Signs",
   "fields": {
+    "Compatible": {
+      "display_name": "Compatible",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Compatible1": {
+      "display_name": "Compatible 1",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Compatible2": {
+      "display_name": "Compatible 2",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
+    "Compatible3": {
+      "display_name": "Compatible 3",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "Date": {
       "display_name": "Date",
       "help": "",
