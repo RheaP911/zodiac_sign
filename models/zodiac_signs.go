@@ -24,6 +24,8 @@ type ZodiacSigns struct {
 	Compatible1 string `uadmin:"image"`
 	Compatible2 string `uadmin:"image"`
 	Compatible3 string `uadmin:"image"`
+
+	Icon string `uadmin:"image"`
 }
 
 // Save function !

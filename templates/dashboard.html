@@ -33,7 +33,7 @@
                     <li class="nav-link">
                         <a href="#" onclick="showZodiac('{{ .Name }}');" class="zodiac-btn">
                             <div class="icon">
-                                <img src="{{ .Symbol }}" alt="" class="sidebar-icon">
+                                <img src="{{ .Icon }}" alt="" class="sidebar-icon">
                             </div>
                             <span class="text nav-text">{{ .Name }}</span>
                         </a>
@@ -196,15 +196,13 @@
             "Compatible": '{{ .Compatible }}',
             "Compatible1": '{{ .Compatible1 }}',
             "Compatible2": '{{ .Compatible2 }}',
-            "Compatible3": '{{ .Compatible3 }}'
+            "Compatible3": '{{ .Compatible3 }}',
+            "Icon": '{{ .Icon }}'
         }
         zodiac.push(z)
         {{ end }}
         localStorage.setItem("zodiac", JSON.stringify(zodiac));
 
-        var colorHex = document.querySelector('.lucky-color-box');
-        var hex = "{{ .Colors.Hex }}";
-        colorHex.style.background = hex;
 
         (function aries(){
             var zod = JSON.parse(localStorage.getItem("zodiac"));
@@ -232,6 +230,7 @@
                     progressLine.style.width = element.IntelligenceRate;
 
                     document.querySelector(".zodiac-date").textContent = element.Date;
+                    document.querySelector(".sidebar-icon").setAttribute('src',element.Icon);
                     document.querySelector(".zodiac-img").setAttribute('src',element.Symbol);
                     document.querySelector(".star-sign-img").setAttribute('src',element.StarSign);
                     document.querySelector(".match-sign.first").setAttribute('src',element.Compatible1);
@@ -277,19 +276,6 @@
             });
 
         }
-
-        // Daily Horoscope
-
-        var horoscope = []
-
-        {{ range .Horoscope }}
-        var h = {
-            "Name": '{{ .Name }}',
-            "Horoscope": '{{ .Horoscope }}',
-        }
-        horoscope.push(h)
-        {{ end }}
-        localStorage.setItem("horoscope", JSON.stringify(horoscope));
         
     </script>
 </body>

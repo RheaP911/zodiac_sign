@@ -14,13 +14,15 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 
 	zodiac := []models.ZodiacSigns{}
 	uadmin.All(&zodiac)
-
 	c["Zodiac"] = zodiac
 
-	horoscope := []models.Horoscope{}
-	uadmin.All(&horoscope)
+	// horoscope := []models.Horoscope{}
+	// uadmin.All(&horoscope)
+	// c["Horoscope"] = horoscope
 
-	c["Horoscope"] = horoscope
+	// colors := []models.Colors{}
+	// uadmin.All(&colors)
+	// c["Colors"] = colors
 
 	// Render the home filepath and pass the context data object to the HTML file.
 	uadmin.RenderHTML(w, r, "templates/dashboard.html", c)
