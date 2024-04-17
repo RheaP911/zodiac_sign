@@ -102,9 +102,7 @@
                 <div class="horoscope">
                     <span class="horoscope-text">DAILY HOROSCOPE</span>
                     <span class="horoscope-date">{{ .Date }}</span>
-                    {{ range .Horoscope }}
-                    <div class="horoscope-desc">{{ .DailyHoroscope }}</div>
-                    {{ end }}
+                    <div class="horoscope-desc"></div>
                 </div>
             </div>
             <div class="compatibility-other-card">
@@ -151,36 +149,32 @@
                 <div class="lucky-color">
                     <span class="dashboard-text">Today's Lucky Color</span>
                     <div class="lucky-color-card">
-                        {{ range .Colors }}
                         <div class="color-box">
-                            <div class="lucky-color-box">
-                                <span class="num-text">{{ .Initial }}</span>
+                            <div class="outer-box">
+                                <div class="lucky-color-box"></div>
                             </div>
                         </div>
                         <div class="color-info">
-                            <div class="color-name">{{ .Name }}</div>
-                            <div class="color-desc">{{ .Description }}</div>
+                            <div class="color-name"></div>
+                            <div class="color-desc"></div>
                         </div>
-                        {{ end }}
                     </div>
                 </div>
                 <div class="lucky-num">
                     <span class="dashboard-text">Today's Lucky Number</span>
-                    {{ range .Numbers }}
                     <div class="lucky-num-card">
                         <div class="num-wrapper">
                             <div class="num-card">
                                 <div class="card-content">
-                                    <span class="num-text">{{ .Number }}</span>
+                                    <span class="num-text number"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="num-info">
-                            <div class="num-name"> {{ .Name }}</div>
-                            <div class="num-desc"> {{ .Description }}</div>
+                            <div class="num-name"></div>
+                            <div class="num-desc"></div>
                         </div>
                     </div>
-                    {{ end }}
                 </div>
             </div>
         </div>
@@ -246,7 +240,38 @@
                     document.querySelector(".match-sign.second").setAttribute('src',element.Compatible2);
                     document.querySelector(".match-sign.third").setAttribute('src',element.Compatible3);
 
+                    var randomHoroscopeText = randomHoroscope();
+                    document.querySelector(".horoscope-desc").innerText = randomHoroscopeText;
 
+                    var randomNumbers = randomNumber();
+                    var randomNumberName = randomNumbers.Name;
+                    var randomNumberNumber = randomNumbers.Number;
+                    var randomNumberDesc = randomNumbers.Description;
+
+                    // console.log('name', randomNumberName);
+                    // console.log('text', randomNumberNumber);
+                    // console.log('desc', randomNumberDesc);
+
+                    document.querySelector(".num-name").innerText = randomNumberName;
+                    document.querySelector(".num-text.number").innerText = randomNumberNumber;
+                    document.querySelector(".num-desc").innerText = randomNumberDesc;
+
+                    var randomColors = randomColor();
+                    var randomColorName = randomColors.Name;
+                    var randomColorHex = randomColors.Hex;
+                    var randomColorDesc = randomColors.Description;
+
+                    console.log('name', randomColorName);
+                    console.log('hex', randomColorHex);
+                    console.log('desc', randomColorDesc);
+
+                    document.querySelector(".color-name").innerText = randomColorName;
+
+                    var colorBox = document.querySelector(".lucky-color-box");
+                    colorBox.style.background = randomColorHex;
+
+
+                    document.querySelector(".color-desc").innerText = randomColorDesc;
                 }
             });
         })()
@@ -277,15 +302,177 @@
                     progressIntelligence.style.width = element.IntelligenceRate;
 
                     document.querySelector(".zodiac-date").textContent = element.Date;
+                    document.querySelector(".sidebar-icon").setAttribute('src',element.Icon);
                     document.querySelector(".zodiac-img").setAttribute('src',element.Symbol);
                     document.querySelector(".star-sign-img").setAttribute('src',element.StarSign);
                     document.querySelector(".match-sign.first").setAttribute('src',element.Compatible1);
                     document.querySelector(".match-sign.second").setAttribute('src',element.Compatible2);
                     document.querySelector(".match-sign.third").setAttribute('src',element.Compatible3);
-
                 }
+
+                
+                var randomHoroscopeText = randomHoroscope();
+                document.querySelector(".horoscope-desc").innerText = randomHoroscopeText;
+
+                var randomNumbers = randomNumber();
+                var randomNumberName = randomNumbers.Name;
+                var randomNumberNumber = randomNumbers.Number;
+                var randomNumberDesc = randomNumbers.Description;
+
+                // console.log('name', randomNumberName);
+                // console.log('text', randomNumberNumber);
+                // console.log('desc', randomNumberDesc);
+
+                document.querySelector(".num-name").innerText = randomNumberName;
+                document.querySelector(".num-text.number").innerText = randomNumberNumber;
+                document.querySelector(".num-desc").innerText = randomNumberDesc;
+
+                var randomColors = randomColor();
+                var randomColorName = randomColors.Name;
+                var randomColorHex = randomColors.Hex;
+                var randomColorDesc = randomColors.Description;
+
+                console.log('name', randomColorName);
+                console.log('hex', randomColorHex);
+                console.log('desc', randomColorDesc);
+
+                document.querySelector(".color-name").innerText = randomColorName;
+
+                var colorBox = document.querySelector(".lucky-color-box");
+                colorBox.style.background = randomColorHex;
+
+
+                document.querySelector(".color-desc").innerText = randomColorDesc;
             });
 
+        }
+
+        var horoscope = []
+
+        console.log('horo', horoscope)
+
+
+        {{ range .Horoscope }}
+        var h = {
+            "Name": '{{ .Name }}',
+            "DailyHoroscope": '{{ .DailyHoroscope }}'
+        }
+        horoscope.push(h)
+        {{ end }}
+
+        localStorage.setItem("horoscope", JSON.stringify(horoscope));
+
+        function randomHoroscope() {
+            // Retrieve stored horoscopes from localStorage
+            var horo = JSON.parse(localStorage.getItem("horoscope"));
+
+            console.log('horolength', horo.length)
+            console.log('horoscope', horo)
+
+
+            // Check if there are any stored horoscopes
+            if (!horo || horo.length === 0) {
+                return "No horoscopes available";
+            }
+
+            // Generate a random index to select a random horoscope
+            var randomIndex = Math.floor(Math.random() * horo.length);
+
+            // Retrieve the randomly selected horoscope
+            var horoscope = horo[randomIndex];
+
+            // console.log("random", randomIndex);
+
+            // Return the daily horoscope
+            return horoscope.DailyHoroscope;
+        }
+
+        var numbers = []
+
+        console.log('num', numbers)
+
+
+        {{ range .Numbers }}
+        var n = {
+            "Name": '{{ .Name }}',
+            "Number": '{{ .Number }}',
+            "Description": '{{ .Description }}'
+        }
+        numbers.push(n)
+        {{ end }}
+
+        localStorage.setItem("numbers", JSON.stringify(numbers));
+        function randomNumber() {
+            // Retrieve stored horoscopes from localStorage
+            var num = JSON.parse(localStorage.getItem("numbers"));
+
+            // console.log('numbers', num)
+            // console.log('numlength', num.length)
+
+
+            // Check if there are any stored horoscopes
+            if (!num || num.length === 0) {
+                console.error("No numbers available in localStorage");
+                return "No numbers available";
+            }
+
+            // Generate a random index to select a random horoscope
+            var randomIndex = Math.floor(Math.random() * num.length);
+
+            // Retrieve the randomly selected horoscope
+            var numbers = num[randomIndex];
+
+            // console.log('randomeIndex', randomIndex)
+
+            return {
+                Name: numbers.Name,
+                Number: numbers.Number,
+                Description: numbers.Description
+            };
+        }
+
+        var colors = []
+
+        console.log('col', colors)
+
+
+        {{ range .Colors }}
+        var c = {
+            "Name": '{{ .Name }}',
+            "Hex": '{{ .Hex }}',
+            "Description": '{{ .Description }}'
+        }
+        colors.push(c)
+        {{ end }}
+
+        localStorage.setItem("colors", JSON.stringify(colors));
+        function randomColor() {
+            // Retrieve stored horoscopes from localStorage
+            var col = JSON.parse(localStorage.getItem("colors"));
+
+            console.log('colors', col)
+            // console.log('collength', col.length)
+
+
+            // Check if there are any stored horoscopes
+            if (!col || col.length === 0) {
+                console.error("No colors available in localStorage");
+                return "No colors available";
+            }
+
+            // Generate a random index to select a random horoscope
+            var randomIndex = Math.floor(Math.random() * col.length);
+
+            // Retrieve the randomly selected horoscope
+            var colors = col[randomIndex];
+
+            console.log('colorIndex', randomIndex)
+
+            return {
+                Name: colors.Name,
+                Hex: colors.Hex,
+                Description: colors.Description
+            };
         }
         
     </script>

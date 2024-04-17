@@ -8,7 +8,6 @@ import (
 type Colors struct {
 	uadmin.Model
 	Name          string `uadmin:"display_name:Color"`
-	Initial string 
 	Hex string
 	Description string
 }

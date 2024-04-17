@@ -683,6 +683,16 @@ body {
     
 }
 
+.outer-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, #E146F9, #5E17EB);
+    padding: 5px;
+    border-radius: 25px;
+
+}
+
 .lucky-picks .lucky-color {
     margin-top: 40px;
 }
@@ -692,6 +702,8 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+
 
 
 .lucky-picks .lucky-num .lucky-num-card,

@@ -1,7 +1,6 @@
 package views
 
 import (
-	"math/rand"
 	"net/http"
 	"time"
 
@@ -28,31 +27,14 @@ func DashboardHandler(w http.ResponseWriter, r *http.Request, session *uadmin.Se
 	c["Zodiac"] = zodiac
 
 	uadmin.All(&horoscope) // Retrieve all available horoscopes
-	horoscopeCount := len(horoscope)
-	randomHoroscopeIndex := randomizeNumber(horoscopeCount)
-	randomHoroscope := horoscope[randomHoroscopeIndex]
-	c["Horoscope"] = []models.Horoscope{randomHoroscope}
+	c["Horoscope"] = horoscope
 
 	uadmin.All(&numbers) // Retrieve all available horoscopes
-	numbersCount := len(numbers)
-	randomNumberIndex := randomizeNumber(numbersCount)
-	randomNumber := numbers[randomNumberIndex]
-	c["Numbers"] = []models.Numbers{randomNumber}
-
+	c["Numbers"] = numbers
 
 	uadmin.All(&colors)
-	colorsCount := len(colors)
-	randomColorIndex := randomizeNumber(colorsCount)
-	randomColor := colors[randomColorIndex]
-	c["Colors"] = []models.Colors{randomColor}
+	c["Colors"] = colors
 
 	// Render the home filepath and pass the context data object to the HTML file.
 	uadmin.RenderHTML(w, r, "templates/dashboard.html", c)
-}
-
-func randomizeNumber(number int) int {
-	// Generate a random number between 0 and the given number
-	randomized := rand.Intn(number) + 1
-
-	return randomized
 }
