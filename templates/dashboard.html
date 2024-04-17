@@ -101,8 +101,10 @@
                 </div>
                 <div class="horoscope">
                     <span class="horoscope-text">DAILY HOROSCOPE</span>
-                    <span class="horoscope-date"></span>
-                    <span class="horoscope-desc"></span>
+                    <span class="horoscope-date">{{ .Date }}</span>
+                    {{ range .Horoscope }}
+                    <div class="horoscope-desc">{{ .DailyHoroscope }}</div>
+                    {{ end }}
                 </div>
             </div>
             <div class="compatibility-other-card">
@@ -149,30 +151,36 @@
                 <div class="lucky-color">
                     <span class="dashboard-text">Today's Lucky Color</span>
                     <div class="lucky-color-card">
+                        {{ range .Colors }}
                         <div class="color-box">
-                            <div class="lucky-color-box"></div>
+                            <div class="lucky-color-box">
+                                <span class="num-text">{{ .Initial }}</span>
+                            </div>
                         </div>
                         <div class="color-info">
-                            <div class="color-name"></div>
-                            <div class="color-desc"></div>
+                            <div class="color-name">{{ .Name }}</div>
+                            <div class="color-desc">{{ .Description }}</div>
                         </div>
+                        {{ end }}
                     </div>
                 </div>
                 <div class="lucky-num">
                     <span class="dashboard-text">Today's Lucky Number</span>
+                    {{ range .Numbers }}
                     <div class="lucky-num-card">
                         <div class="num-wrapper">
                             <div class="num-card">
                                 <div class="card-content">
-                                    <span class="num-text"></span>
+                                    <span class="num-text">{{ .Number }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="num-info">
-                            <div class="num-name"></div>
-                            <div class="num-desc"></div>
+                            <div class="num-name"> {{ .Name }}</div>
+                            <div class="num-desc"> {{ .Description }}</div>
                         </div>
                     </div>
+                    {{ end }}
                 </div>
             </div>
         </div>
@@ -181,6 +189,7 @@
 
     <script src="/static/js/script.js"></script>
     <script>
+
         // (document.getElementById("aries_btn")).click()
         var zodiac = []
 
@@ -211,23 +220,23 @@
                 console.log('e: ', element)
                 if (element.Name == "Aries"){
                     console.log('match', element.Name)
-                    var zodiac_name =document.getElementById("zodiac-name") 
-                    var looks_rate =document.getElementById("card-percent-looks") 
-                    var personality_rate =document.getElementById("card-percent-personality") 
-                    var intelligence_rate =document.getElementById("card-percent-intelligence") 
-                    var compatible_with =document.getElementById("card-subtext") 
-                    var progressLine = document.querySelector(".progress-line.looks span");
-                    var progressLine = document.querySelector(".progress-line.personality span");
-                    var progressLine = document.querySelector(".progress-line.intelligence span");
+                    var zodiac_name =document.getElementById("zodiac-name"); 
+                    var looks_rate =document.getElementById("card-percent-looks"); 
+                    var personality_rate =document.getElementById("card-percent-personality"); 
+                    var intelligence_rate =document.getElementById("card-percent-intelligence"); 
+                    var compatible_with =document.getElementById("card-subtext"); 
+                    var progressLooks = document.querySelector(".progress-line.looks span");
+                    var progressPersonality = document.querySelector(".progress-line.personality span");
+                    var progressIntelligence = document.querySelector(".progress-line.intelligence span");
 
                     zodiac_name.innerText = element.Name;
                     looks_rate.innerText = element.LooksRate;
                     personality_rate.innerText = element.PersonalityRate;
                     intelligence_rate.innerText = element.IntelligenceRate;
                     compatible_with.innerText = element.Compatible;
-                    progressLine.style.width = element.LooksRate;
-                    progressLine.style.width = element.PersonalityRate;
-                    progressLine.style.width = element.IntelligenceRate;
+                    progressLooks.style.width = element.LooksRate;
+                    progressPersonality.style.width = element.PersonalityRate;
+                    progressIntelligence.style.width = element.IntelligenceRate;
 
                     document.querySelector(".zodiac-date").textContent = element.Date;
                     document.querySelector(".sidebar-icon").setAttribute('src',element.Icon);
@@ -236,6 +245,8 @@
                     document.querySelector(".match-sign.first").setAttribute('src',element.Compatible1);
                     document.querySelector(".match-sign.second").setAttribute('src',element.Compatible2);
                     document.querySelector(".match-sign.third").setAttribute('src',element.Compatible3);
+
+
                 }
             });
         })()
@@ -247,23 +258,23 @@
                 console.log('e: ', element)
                 if (element.Name == name){
                     console.log('match', element.Name)
-                    var zodiac_name =document.getElementById("zodiac-name") 
-                    var looks_rate =document.getElementById("card-percent-looks") 
-                    var personality_rate =document.getElementById("card-percent-personality") 
-                    var intelligence_rate =document.getElementById("card-percent-intelligence") 
-                    var compatible_with =document.getElementById("card-subtext") 
-                    var progressLine = document.querySelector(".progress-line.looks span");
-                    var progressLine = document.querySelector(".progress-line.personality span");
-                    var progressLine = document.querySelector(".progress-line.intelligence span");
+                    var zodiac_name =document.getElementById("zodiac-name"); 
+                    var looks_rate =document.getElementById("card-percent-looks"); 
+                    var personality_rate =document.getElementById("card-percent-personality"); 
+                    var intelligence_rate =document.getElementById("card-percent-intelligence"); 
+                    var compatible_with =document.getElementById("card-subtext"); 
+                    var progressLooks = document.querySelector(".progress-line.looks span");
+                    var progressPersonality = document.querySelector(".progress-line.personality span");
+                    var progressIntelligence = document.querySelector(".progress-line.intelligence span");
 
                     zodiac_name.innerText = element.Name;
                     looks_rate.innerText = element.LooksRate;
                     personality_rate.innerText = element.PersonalityRate;
                     intelligence_rate.innerText = element.IntelligenceRate;
                     compatible_with.innerText = element.Compatible;
-                    progressLine.style.width = element.LooksRate;
-                    progressLine.style.width = element.PersonalityRate;
-                    progressLine.style.width = element.IntelligenceRate;
+                    progressLooks.style.width = element.LooksRate;
+                    progressPersonality.style.width = element.PersonalityRate;
+                    progressIntelligence.style.width = element.IntelligenceRate;
 
                     document.querySelector(".zodiac-date").textContent = element.Date;
                     document.querySelector(".zodiac-img").setAttribute('src',element.Symbol);

@@ -8,7 +8,7 @@ import (
 type Horoscope struct {
 	uadmin.Model
 	Name      string `uadmin:"default_value:Random Horoscope"`
-	Horoscope string `uadmin:"display_name:Daily Horoscope"`
+	DailyHoroscope string `uadmin:"display_name:Daily Horoscope"`
 }
 
 // Save function !

@@ -26,10 +26,9 @@ func LoginHandler(w http.ResponseWriter, r *http.Request) {
 		username := r.PostFormValue("username")
 		username = strings.TrimSpace(strings.ToLower(username))
 		password := r.PostFormValue("password")
-		otp := r.PostFormValue("otp")
 
 		// Login2FA login using username, password and otp for users with OTPRequired = true.
-		session := uadmin.Login2FA(r, username, password, otp)
+		session, _ := uadmin.Login(r, username, password)
 
 		// Check whether the session returned is nil or the user is not active.
 		if session == nil || !session.User.Active {

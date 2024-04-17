@@ -1,6 +1,13 @@
 {
   "display_name": "Horoscope",
   "fields": {
+    "DailyHoroscope": {
+      "display_name": "Daily Horoscope",
+      "help": "",
+      "pattern_msg": "",
+      "err_msg": {},
+      "Choices": {}
+    },
     "Horoscope": {
       "display_name": "Daily Horoscope",
       "help": "",

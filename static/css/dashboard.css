@@ -11,7 +11,7 @@
 }
 
 body {
-    background: url(/static/resources/horo_bg.png);
+    background: url(/static/resources/horo_bg2.png);
     /* background: #190C26; */
 
 }
@@ -419,7 +419,7 @@ body {
     height: 40vh;
     /* border: 1px solid #f0f0f0; */
     background: #17072B;
-    padding: 40px;
+    padding: 40px 60px;
     border-radius: 25px;
 }
 
@@ -434,6 +434,7 @@ body {
 .daily-horoscope-card .star-sign img {
     width: 300px;
     /* animation: 5s floatSide linear infinite; */
+    /* animation: 5s rotate linear infinite; */
 }
 
 @keyframes floatSide {
@@ -444,7 +445,7 @@ body {
         transform: translateX(5%);
     }
     70% {
-        transform: translateX(-5%);
+        transform: translateX(-20%);
     }
     100% {
         transform: translateX(0);
@@ -686,6 +687,12 @@ body {
     margin-top: 40px;
 }
 
+.lucky-color-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .lucky-picks .lucky-num .lucky-num-card,
 .lucky-picks .lucky-color .lucky-color-card {
@@ -737,7 +744,7 @@ body {
     
 }
 
-.card-content .num-text {
+.num-text {
     position: relative;
     /* color: #E146F9; */
     color: #f0f0f0;
