@@ -211,7 +211,7 @@
             var zod = JSON.parse(localStorage.getItem("zodiac"));
             console.log("zod: ", zod);
             zod.forEach(element => {
-                console.log('e: ', element)
+                // console.log('e: ', element)
                 if (element.Name == "Aries"){
                     console.log('match', element.Name)
                     var zodiac_name =document.getElementById("zodiac-name"); 
@@ -248,10 +248,6 @@
                     var randomNumberNumber = randomNumbers.Number;
                     var randomNumberDesc = randomNumbers.Description;
 
-                    // console.log('name', randomNumberName);
-                    // console.log('text', randomNumberNumber);
-                    // console.log('desc', randomNumberDesc);
-
                     document.querySelector(".num-name").innerText = randomNumberName;
                     document.querySelector(".num-text.number").innerText = randomNumberNumber;
                     document.querySelector(".num-desc").innerText = randomNumberDesc;
@@ -260,10 +256,6 @@
                     var randomColorName = randomColors.Name;
                     var randomColorHex = randomColors.Hex;
                     var randomColorDesc = randomColors.Description;
-
-                    console.log('name', randomColorName);
-                    console.log('hex', randomColorHex);
-                    console.log('desc', randomColorDesc);
 
                     document.querySelector(".color-name").innerText = randomColorName;
 
@@ -280,7 +272,7 @@
             var zod = JSON.parse(localStorage.getItem("zodiac"));
             console.log("zod: ", zod);
             zod.forEach(element => {
-                console.log('e: ', element)
+                // console.log('e: ', element)
                 if (element.Name == name){
                     console.log('match', element.Name)
                     var zodiac_name =document.getElementById("zodiac-name"); 
@@ -310,7 +302,7 @@
                     document.querySelector(".match-sign.third").setAttribute('src',element.Compatible3);
                 }
 
-                
+
                 var randomHoroscopeText = randomHoroscope();
                 document.querySelector(".horoscope-desc").innerText = randomHoroscopeText;
 
@@ -318,10 +310,6 @@
                 var randomNumberName = randomNumbers.Name;
                 var randomNumberNumber = randomNumbers.Number;
                 var randomNumberDesc = randomNumbers.Description;
-
-                // console.log('name', randomNumberName);
-                // console.log('text', randomNumberNumber);
-                // console.log('desc', randomNumberDesc);
 
                 document.querySelector(".num-name").innerText = randomNumberName;
                 document.querySelector(".num-text.number").innerText = randomNumberNumber;
@@ -331,10 +319,6 @@
                 var randomColorName = randomColors.Name;
                 var randomColorHex = randomColors.Hex;
                 var randomColorDesc = randomColors.Description;
-
-                console.log('name', randomColorName);
-                console.log('hex', randomColorHex);
-                console.log('desc', randomColorDesc);
 
                 document.querySelector(".color-name").innerText = randomColorName;
 
@@ -365,10 +349,6 @@
         function randomHoroscope() {
             // Retrieve stored horoscopes from localStorage
             var horo = JSON.parse(localStorage.getItem("horoscope"));
-
-            console.log('horolength', horo.length)
-            console.log('horoscope', horo)
-
 
             // Check if there are any stored horoscopes
             if (!horo || horo.length === 0) {
@@ -405,10 +385,6 @@
         function randomNumber() {
             // Retrieve stored horoscopes from localStorage
             var num = JSON.parse(localStorage.getItem("numbers"));
-
-            // console.log('numbers', num)
-            // console.log('numlength', num.length)
-
 
             // Check if there are any stored horoscopes
             if (!num || num.length === 0) {
@@ -449,9 +425,6 @@
         function randomColor() {
             // Retrieve stored horoscopes from localStorage
             var col = JSON.parse(localStorage.getItem("colors"));
-
-            console.log('colors', col)
-            // console.log('collength', col.length)
 
 
             // Check if there are any stored horoscopes

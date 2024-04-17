@@ -16,22 +16,29 @@
         <img src="/static/resources/site-logo.png" alt="" class="site-logo">
     </div>
     <div class="login-card">
+        <div class="title-container">
+            <p class="title">Login to your account</p>
+            <span class="subtitle">Unlock Your Celestial Compass: Daily Horoscopes, Personalities, and More Await!</span>
+        </div>
         <form method="POST" action="/login/">
-            <input type="text" name="username" placeholder="Username" value="{{.Username}}" required>
-            <i class='bx bx-user'></i><br>
-            <input type="password" name="password" placeholder="Password" value="{{.Password}}" required>
-            <i class='bx bx-lock-alt' ></i><br>
+            <!-- <label class="input-label" for="username_field">Username</label><br> -->
+            <i class='bx bx-user'></i>
+            <input type="text" name="username" class="username_field" placeholder="Username" value="{{.Username}}" required><br>
+            <!-- <label class="input-label" for="password_field">Password</label><br> -->
+            <i class='bx bx-lock-alt' ></i>
+            <input type="password" name="password" class="password_field" placeholder="Password" value="{{.Password}}" required>
     
             <br><button type="submit">Login</button><br>
             
         </form>
-    </div>
+        {{if .ErrExists}}
+        <p>
+            <b style="color:red; font-weight: 300; font-size: 12px">{{.Err}}</b>
+        </p>
+        {{end}}
+    </div><br>
     
     
-    {{if .ErrExists}}
-    <p>
-        <b style="color:red">{{.Err}}</b>
-    </p>
-    {{end}}
+    
 </body>
 </html>

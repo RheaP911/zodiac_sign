@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/RheaP911/zodiac_sign/api"
 	"github.com/RheaP911/zodiac_sign/models"
 	"github.com/RheaP911/zodiac_sign/views"
 	"github.com/uadmin/uadmin"
@@ -22,6 +23,7 @@ func main() {
 	)
 
 	http.HandleFunc("/", uadmin.Handler(views.MainHandler))
+	http.HandleFunc("/api/", uadmin.Handler(api.Handler))
 
 	// Run the server
 	uadmin.StartServer()

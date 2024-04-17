@@ -19,7 +19,7 @@ body {
     height: 100vh;
     gap: 0;
     background: #190C26;
-    /* background: url(/static/resources/horo_bg.png); */
+    background: url(/static/resources/horo_bg.png);
 
 }
 
@@ -101,8 +101,68 @@ body {
     /* background: url(/static/resources/horo_bg2.png); */
 }
 
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 3em;
+}
+
+
+.title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f0f0f0;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 0.725rem;
+    max-width: 80%;
+    text-align: center;
+    line-height: 1.1rem;
+    text-align: center;
+    color: #E6D3FB;
+}
+
+
 .login-card form {
     text-align: center;
+}
+
+.input-label {
+    font-size: 16px;
+    color: #E6D3FB;
+    font-weight: 500;
+    text-align: left;
+}
+
+i {
+    position: absolute;
+    top: 70;
+    left: 70;
+    font-size: 20px;
+    color: #190C26;
+    z-index: 10;
+    margin-top: 0.6rem;
+    margin-left: 0.6rem;
+}
+
+.username_field ,
+.password_field {
+    width: auto;
+    height: 40px;
+    padding: 0 0 0 40px;
+    border-radius: 7px;
+    outline: none;
+    border: 1px solid #e5e5e5;
+    filter: drop-shadow(0px 1px 0px #efefef)
+        drop-shadow(0px 1px 0.5px rgba(239, 239, 239, 0.5));
+    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
+    margin-bottom: 1.5rem;
 }
 
 .input {
@@ -111,3 +171,18 @@ body {
     border-radius: #E6D3FB;
 }
 
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #f0f0f0;
+    font-weight: 600;
+    height: 40px;
+    text-align: center;
+    border-radius: 7px;
+    border-color: transparent;
+    outline: none;
+    background: linear-gradient(to bottom right, #E146F9, #5E17EB);
+    margin-top: 0.8rem;
+}
