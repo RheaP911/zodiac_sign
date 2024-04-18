@@ -206,75 +206,22 @@
         {{ end }}
         localStorage.setItem("zodiac", JSON.stringify(zodiac));
 
-
-        (function aries(){
+        function initializeRandomValues() {
             var zod = JSON.parse(localStorage.getItem("zodiac"));
-            console.log("zod: ", zod);
             zod.forEach(element => {
-                // console.log('e: ', element)
-                if (element.Name == "Aries"){
-                    console.log('match', element.Name)
-                    var zodiac_name =document.getElementById("zodiac-name"); 
-                    var looks_rate =document.getElementById("card-percent-looks"); 
-                    var personality_rate =document.getElementById("card-percent-personality"); 
-                    var intelligence_rate =document.getElementById("card-percent-intelligence"); 
-                    var compatible_with =document.getElementById("card-subtext"); 
-                    var progressLooks = document.querySelector(".progress-line.looks span");
-                    var progressPersonality = document.querySelector(".progress-line.personality span");
-                    var progressIntelligence = document.querySelector(".progress-line.intelligence span");
-
-                    zodiac_name.innerText = element.Name;
-                    looks_rate.innerText = element.LooksRate;
-                    personality_rate.innerText = element.PersonalityRate;
-                    intelligence_rate.innerText = element.IntelligenceRate;
-                    compatible_with.innerText = element.Compatible;
-                    progressLooks.style.width = element.LooksRate;
-                    progressPersonality.style.width = element.PersonalityRate;
-                    progressIntelligence.style.width = element.IntelligenceRate;
-
-                    document.querySelector(".zodiac-date").textContent = element.Date;
-                    document.querySelector(".sidebar-icon").setAttribute('src',element.Icon);
-                    document.querySelector(".zodiac-img").setAttribute('src',element.Symbol);
-                    document.querySelector(".star-sign-img").setAttribute('src',element.StarSign);
-                    document.querySelector(".match-sign.first").setAttribute('src',element.Compatible1);
-                    document.querySelector(".match-sign.second").setAttribute('src',element.Compatible2);
-                    document.querySelector(".match-sign.third").setAttribute('src',element.Compatible3);
-
-                    var randomHoroscopeText = randomHoroscope();
-                    document.querySelector(".horoscope-desc").innerText = randomHoroscopeText;
-
-                    var randomNumbers = randomNumber();
-                    var randomNumberName = randomNumbers.Name;
-                    var randomNumberNumber = randomNumbers.Number;
-                    var randomNumberDesc = randomNumbers.Description;
-
-                    document.querySelector(".num-name").innerText = randomNumberName;
-                    document.querySelector(".num-text.number").innerText = randomNumberNumber;
-                    document.querySelector(".num-desc").innerText = randomNumberDesc;
-
-                    var randomColors = randomColor();
-                    var randomColorName = randomColors.Name;
-                    var randomColorHex = randomColors.Hex;
-                    var randomColorDesc = randomColors.Description;
-
-                    document.querySelector(".color-name").innerText = randomColorName;
-
-                    var colorBox = document.querySelector(".lucky-color-box");
-                    colorBox.style.background = randomColorHex;
-
-
-                    document.querySelector(".color-desc").innerText = randomColorDesc;
-                }
+                localStorage.setItem(element.Name + "_randomHoroscope", randomHoroscope());
+                localStorage.setItem(element.Name + "_randomNumbers", JSON.stringify(randomNumber()));
+                localStorage.setItem(element.Name + "_randomColors", JSON.stringify(randomColor()));
             });
-        })()
+        }
 
         function showZodiac(name) {
             var zod = JSON.parse(localStorage.getItem("zodiac"));
-            console.log("zod: ", zod);
+            // console.log("zod: ", zod);
             zod.forEach(element => {
                 // console.log('e: ', element)
                 if (element.Name == name){
-                    console.log('match', element.Name)
+                    // console.log('match', element.Name)
                     var zodiac_name =document.getElementById("zodiac-name"); 
                     var looks_rate =document.getElementById("card-percent-looks"); 
                     var personality_rate =document.getElementById("card-percent-personality"); 
@@ -294,46 +241,72 @@
                     progressIntelligence.style.width = element.IntelligenceRate;
 
                     document.querySelector(".zodiac-date").textContent = element.Date;
-                    document.querySelector(".sidebar-icon").setAttribute('src',element.Icon);
+                    // document.querySelector(".sidebar-icon").setAttribute('src',element.Icon);
                     document.querySelector(".zodiac-img").setAttribute('src',element.Symbol);
                     document.querySelector(".star-sign-img").setAttribute('src',element.StarSign);
                     document.querySelector(".match-sign.first").setAttribute('src',element.Compatible1);
                     document.querySelector(".match-sign.second").setAttribute('src',element.Compatible2);
                     document.querySelector(".match-sign.third").setAttribute('src',element.Compatible3);
+
+                    // Display the stored random values for this zodiac
+                    document.querySelector(".horoscope-desc").innerText = localStorage.getItem(element.Name + "_randomHoroscope");
+                    var storedNumbers = JSON.parse(localStorage.getItem(element.Name + "_randomNumbers"));
+                    document.querySelector(".num-name").innerText = storedNumbers.Name;
+                    document.querySelector(".num-text.number").innerText = storedNumbers.Number;
+                    document.querySelector(".num-desc").innerText = storedNumbers.Description;
+                    var storedColors = JSON.parse(localStorage.getItem(element.Name + "_randomColors"));
+                    document.querySelector(".color-name").innerText = storedColors.Name;
+                    var colorBox = document.querySelector(".lucky-color-box");
+                    colorBox.style.background = storedColors.Hex;
+                    document.querySelector(".color-desc").innerText = storedColors.Description;
+                    
                 }
 
-
-                var randomHoroscopeText = randomHoroscope();
-                document.querySelector(".horoscope-desc").innerText = randomHoroscopeText;
-
-                var randomNumbers = randomNumber();
-                var randomNumberName = randomNumbers.Name;
-                var randomNumberNumber = randomNumbers.Number;
-                var randomNumberDesc = randomNumbers.Description;
-
-                document.querySelector(".num-name").innerText = randomNumberName;
-                document.querySelector(".num-text.number").innerText = randomNumberNumber;
-                document.querySelector(".num-desc").innerText = randomNumberDesc;
-
-                var randomColors = randomColor();
-                var randomColorName = randomColors.Name;
-                var randomColorHex = randomColors.Hex;
-                var randomColorDesc = randomColors.Description;
-
-                document.querySelector(".color-name").innerText = randomColorName;
-
-                var colorBox = document.querySelector(".lucky-color-box");
-                colorBox.style.background = randomColorHex;
+                // document.querySelector(".horoscope-desc").innerText = localStorage.getItem("randomHoroscope");
+                // var storedNumbers = JSON.parse(localStorage.getItem("randomNumbers"));
+                // document.querySelector(".num-name").innerText = storedNumbers.Name;
+                // document.querySelector(".num-text.number").innerText = storedNumbers.Number;
+                // document.querySelector(".num-desc").innerText = storedNumbers.Description;
+                // var storedColors = JSON.parse(localStorage.getItem("randomColors"));
+                // document.querySelector(".color-name").innerText = storedColors.Name;
+                // var colorBox = document.querySelector(".lucky-color-box");
+                // colorBox.style.background = storedColors.Hex;
+                // document.querySelector(".color-desc").innerText = storedColors.Description;
 
 
-                document.querySelector(".color-desc").innerText = randomColorDesc;
+                // var randomHoroscopeText = randomHoroscope();
+                // document.querySelector(".horoscope-desc").innerText = randomHoroscopeText;
+
+                // var randomNumbers = randomNumber();
+                // var randomNumberName = randomNumbers.Name;
+                // var randomNumberNumber = randomNumbers.Number;
+                // var randomNumberDesc = randomNumbers.Description;
+
+                // document.querySelector(".num-name").innerText = randomNumberName;
+                // document.querySelector(".num-text.number").innerText = randomNumberNumber;
+                // document.querySelector(".num-desc").innerText = randomNumberDesc;
+
+                // var randomColors = randomColor();
+                // var randomColorName = randomColors.Name;
+                // var randomColorHex = randomColors.Hex;
+                // var randomColorDesc = randomColors.Description;
+
+                // document.querySelector(".color-name").innerText = randomColorName;
+
+                // var colorBox = document.querySelector(".lucky-color-box");
+                // colorBox.style.background = randomColorHex;
+
+
+                // document.querySelector(".color-desc").innerText = randomColorDesc;
             });
 
         }
+        initializeRandomValues();
+        showZodiac("Aries");
 
         var horoscope = []
 
-        console.log('horo', horoscope)
+        // console.log('horo', horoscope)
 
 
         {{ range .Horoscope }}
@@ -343,33 +316,48 @@
         }
         horoscope.push(h)
         {{ end }}
+        
 
         localStorage.setItem("horoscope", JSON.stringify(horoscope));
 
         function randomHoroscope() {
-            // Retrieve stored horoscopes from localStorage
+    // Retrieve stored horoscopes from localStorage
             var horo = JSON.parse(localStorage.getItem("horoscope"));
-
+            
             // Check if there are any stored horoscopes
             if (!horo || horo.length === 0) {
                 return "No horoscopes available";
             }
 
-            // Generate a random index to select a random horoscope
-            var randomIndex = Math.floor(Math.random() * horo.length);
+            // Retrieve array of indices from localStorage
+            var usedIndices = JSON.parse(localStorage.getItem("usedIndices")) || [];
+            
+            // Reset usedIndices array if all horoscopes have been used
+            if (usedIndices.length === horo.length) {
+                usedIndices = [];
+            }
+
+            // Generate a random index until finding one that hasn't been used
+            var randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * horo.length);
+            } while (usedIndices.includes(randomIndex));
+
+            // Store the selected index
+            usedIndices.push(randomIndex);
+            localStorage.setItem("usedIndices", JSON.stringify(usedIndices));
 
             // Retrieve the randomly selected horoscope
             var horoscope = horo[randomIndex];
-
-            // console.log("random", randomIndex);
 
             // Return the daily horoscope
             return horoscope.DailyHoroscope;
         }
 
+
         var numbers = []
 
-        console.log('num', numbers)
+        // console.log('num', numbers)
 
 
         {{ range .Numbers }}
@@ -388,7 +376,7 @@
 
             // Check if there are any stored horoscopes
             if (!num || num.length === 0) {
-                console.error("No numbers available in localStorage");
+                // console.error("No numbers available in localStorage");
                 return "No numbers available";
             }
 
@@ -409,7 +397,7 @@
 
         var colors = []
 
-        console.log('col', colors)
+        // console.log('col', colors)
 
 
         {{ range .Colors }}
@@ -429,7 +417,7 @@
 
             // Check if there are any stored horoscopes
             if (!col || col.length === 0) {
-                console.error("No colors available in localStorage");
+                // console.error("No colors available in localStorage");
                 return "No colors available";
             }
 
@@ -439,7 +427,7 @@
             // Retrieve the randomly selected horoscope
             var colors = col[randomIndex];
 
-            console.log('colorIndex', randomIndex)
+            // console.log('colorIndex', randomIndex)
 
             return {
                 Name: colors.Name,
