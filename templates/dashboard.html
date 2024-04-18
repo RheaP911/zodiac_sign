@@ -183,28 +183,29 @@
 
     <script src="/static/js/script.js"></script>
     <script>
-
-        // (document.getElementById("aries_btn")).click()
-        var zodiac = []
-
-        {{ range .Zodiac }}
-        var z = {
-            "Name": '{{ .Name }}',
-            "Date": '{{ .Date }}',
-            "LooksRate": '{{ .LooksRate }}',
-            "PersonalityRate": '{{ .PersonalityRate }}',
-            "IntelligenceRate": '{{ .IntelligenceRate }}',
-            "Symbol": '{{ .Symbol }}',
-            "StarSign": '{{ .StarSign }}',
-            "Compatible": '{{ .Compatible }}',
-            "Compatible1": '{{ .Compatible1 }}',
-            "Compatible2": '{{ .Compatible2 }}',
-            "Compatible3": '{{ .Compatible3 }}',
-            "Icon": '{{ .Icon }}'
+        
+        if (!localStorage.getItem("zodiac")) {
+            // If not, initialize zodiac data
+            var zodiac = [];
+            {{ range .Zodiac }}
+                var z = {
+                    "Name": '{{ .Name }}',
+                    "Date": '{{ .Date }}',
+                    "LooksRate": '{{ .LooksRate }}',
+                    "PersonalityRate": '{{ .PersonalityRate }}',
+                    "IntelligenceRate": '{{ .IntelligenceRate }}',
+                    "Symbol": '{{ .Symbol }}',
+                    "StarSign": '{{ .StarSign }}',
+                    "Compatible": '{{ .Compatible }}',
+                    "Compatible1": '{{ .Compatible1 }}',
+                    "Compatible2": '{{ .Compatible2 }}',
+                    "Compatible3": '{{ .Compatible3 }}',
+                    "Icon": '{{ .Icon }}'
+                }
+                zodiac.push(z);
+            {{ end }}
+            localStorage.setItem("zodiac", JSON.stringify(zodiac));
         }
-        zodiac.push(z)
-        {{ end }}
-        localStorage.setItem("zodiac", JSON.stringify(zodiac));
 
         function initializeRandomValues() {
             var zod = JSON.parse(localStorage.getItem("zodiac"));
@@ -215,8 +216,19 @@
             });
         }
 
+        document.addEventListener("DOMContentLoaded", function() {
+            var selectedZodiac = localStorage.getItem("selectedZodiac");
+            if (selectedZodiac) {
+                showZodiac(selectedZodiac); 
+            } else {
+                showZodiac("Aries"); 
+            }
+        });
+
+
         function showZodiac(name) {
             var zod = JSON.parse(localStorage.getItem("zodiac"));
+            localStorage.setItem("selectedZodiac", name);
             // console.log("zod: ", zod);
             zod.forEach(element => {
                 // console.log('e: ', element)
@@ -248,7 +260,6 @@
                     document.querySelector(".match-sign.second").setAttribute('src',element.Compatible2);
                     document.querySelector(".match-sign.third").setAttribute('src',element.Compatible3);
 
-                    // Display the stored random values for this zodiac
                     document.querySelector(".horoscope-desc").innerText = localStorage.getItem(element.Name + "_randomHoroscope");
                     var storedNumbers = JSON.parse(localStorage.getItem(element.Name + "_randomNumbers"));
                     document.querySelector(".num-name").innerText = storedNumbers.Name;
@@ -301,56 +312,98 @@
             });
 
         }
-        initializeRandomValues();
-        showZodiac("Aries");
 
-        var horoscope = []
+        // (function Aries() {
+        //     var zod = JSON.parse(localStorage.getItem("zodiac"));
+        //     // console.log("zod: ", zod);
+        //     zod.forEach(element => {
+        //         // console.log('e: ', element)
+        //         if (element.Name == "Aries"){
+        //             // console.log('match', element.Name)
+        //             var zodiac_name =document.getElementById("zodiac-name"); 
+        //             var looks_rate =document.getElementById("card-percent-looks"); 
+        //             var personality_rate =document.getElementById("card-percent-personality"); 
+        //             var intelligence_rate =document.getElementById("card-percent-intelligence"); 
+        //             var compatible_with =document.getElementById("card-subtext"); 
+        //             var progressLooks = document.querySelector(".progress-line.looks span");
+        //             var progressPersonality = document.querySelector(".progress-line.personality span");
+        //             var progressIntelligence = document.querySelector(".progress-line.intelligence span");
 
-        // console.log('horo', horoscope)
+        //             zodiac_name.innerText = element.Name;
+        //             looks_rate.innerText = element.LooksRate;
+        //             personality_rate.innerText = element.PersonalityRate;
+        //             intelligence_rate.innerText = element.IntelligenceRate;
+        //             compatible_with.innerText = element.Compatible;
+        //             progressLooks.style.width = element.LooksRate;
+        //             progressPersonality.style.width = element.PersonalityRate;
+        //             progressIntelligence.style.width = element.IntelligenceRate;
 
+        //             document.querySelector(".zodiac-date").textContent = element.Date;
+        //             // document.querySelector(".sidebar-icon").setAttribute('src',element.Icon);
+        //             document.querySelector(".zodiac-img").setAttribute('src',element.Symbol);
+        //             document.querySelector(".star-sign-img").setAttribute('src',element.StarSign);
+        //             document.querySelector(".match-sign.first").setAttribute('src',element.Compatible1);
+        //             document.querySelector(".match-sign.second").setAttribute('src',element.Compatible2);
+        //             document.querySelector(".match-sign.third").setAttribute('src',element.Compatible3);
 
-        {{ range .Horoscope }}
-        var h = {
-            "Name": '{{ .Name }}',
-            "DailyHoroscope": '{{ .DailyHoroscope }}'
-        }
-        horoscope.push(h)
-        {{ end }}
+        //             // Display the stored random values for this zodiac
+        //             document.querySelector(".horoscope-desc").innerText = localStorage.getItem(element.Name + "_randomHoroscope");
+        //             var storedNumbers = JSON.parse(localStorage.getItem(element.Name + "_randomNumbers"));
+        //             document.querySelector(".num-name").innerText = storedNumbers.Name;
+        //             document.querySelector(".num-text.number").innerText = storedNumbers.Number;
+        //             document.querySelector(".num-desc").innerText = storedNumbers.Description;
+        //             var storedColors = JSON.parse(localStorage.getItem(element.Name + "_randomColors"));
+        //             document.querySelector(".color-name").innerText = storedColors.Name;
+        //             var colorBox = document.querySelector(".lucky-color-box");
+        //             colorBox.style.background = storedColors.Hex;
+        //             document.querySelector(".color-desc").innerText = storedColors.Description;
+                    
+        //         }
+
+                
+        //     });
+
+        // })();
         
+
+        if (!localStorage.getItem("horoscope")) {
+            var horoscope = [];
+            {{ range .Horoscope }}
+                var h = {
+                    "Name": '{{ .Name }}',
+                    "DailyHoroscope": '{{ .DailyHoroscope }}'
+                }
+                horoscope.push(h);
+            {{ end }}
+            localStorage.setItem("horoscope", JSON.stringify(horoscope));
+        }
+            
 
         localStorage.setItem("horoscope", JSON.stringify(horoscope));
 
         function randomHoroscope() {
-    // Retrieve stored horoscopes from localStorage
             var horo = JSON.parse(localStorage.getItem("horoscope"));
             
-            // Check if there are any stored horoscopes
             if (!horo || horo.length === 0) {
                 return "No horoscopes available";
             }
 
-            // Retrieve array of indices from localStorage
             var usedIndices = JSON.parse(localStorage.getItem("usedIndices")) || [];
             
-            // Reset usedIndices array if all horoscopes have been used
             if (usedIndices.length === horo.length) {
                 usedIndices = [];
             }
 
-            // Generate a random index until finding one that hasn't been used
             var randomIndex;
             do {
                 randomIndex = Math.floor(Math.random() * horo.length);
             } while (usedIndices.includes(randomIndex));
 
-            // Store the selected index
             usedIndices.push(randomIndex);
             localStorage.setItem("usedIndices", JSON.stringify(usedIndices));
 
-            // Retrieve the randomly selected horoscope
             var horoscope = horo[randomIndex];
 
-            // Return the daily horoscope
             return horoscope.DailyHoroscope;
         }
 
@@ -435,6 +488,7 @@
                 Description: colors.Description
             };
         }
+        initializeRandomValues();
         
     </script>
 </body>
